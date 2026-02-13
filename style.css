@@ -1,0 +1,170 @@
+:root {
+  --primary: #1b66fa;   /* 涓昏壊璋  */
+  --accent:  #ffb340;   /* 鍓壊璋  */
+  --bg:       #f5f6f7;
+  --card-bg:  #ffffff;
+  --text:     #333;
+  --subtext:  #666;
+}
+
+@font-face {
+  font-family: 'EnglishFont';
+  src: url('./v.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===== 椤甸潰鍩虹 ===== */
+body {
+  margin: 0;
+  font-family: EnglishFont, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+.hero {
+  min-height: 88vh;
+  padding: 140px 40px;
+  text-align: center;
+  background:
+    #ffffff,
+    linear-gradient(180deg, #020617, #00020a);
+}
+/* ===== 椤堕儴鏍囬 ===== */
+.site-header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2.6rem;
+  color: var(--primary); /* 涓昏壊鐢ㄤ簬鏍囬 */
+}
+.site-header h2 {
+  margin: 0;
+  font-size: 2.4rem;
+  color: var(--primary); /* 涓昏壊鐢ㄤ簬鏍囬 */
+}
+
+.subtitle {
+  margin-top: 14px;
+  color: var(--subtext);
+}
+
+/* ===== 涓讳綋甯冨眬 ===== */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.post-kard {
+  display: inline-block;   /* 鉁  涓嶅啀鏄  block */
+  vertical-align: top;     /* 澶氬崱鐗囧苟鎺掓椂鏇存暣榻  */
+
+  background-color: var(--card-bg);
+  border-radius: 14px;
+
+  padding: 16px;           /* 缂╁皬鈥滀綋绉€  */
+  margin: 0 16px 14px 0;   /* 鍙宠竟鍜屽簳閮ㄧ暀鐐归棿璺濓紙涓嶅眳涓級 */
+  width: 300px;           /* 鉁  鎺у埗瀹藉害锛氫綘鎯冲绐勫氨澶氱獎 */
+  /* 鎴栬€呯敤 max-width: 320px; 鏇寸伒娲  */
+
+  text-decoration: none;
+  color: inherit;
+
+  border: 2px solid transparent;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.post-kard h2 {
+  margin: 0 0 10px;
+  color: var(--primary);
+}
+
+.post-kard p {
+  margin: 0;
+  color: var(--subtext);
+}
+
+/* ===== 鎮仠鐘舵€  ===== */
+.post-kard:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary); /* 涓昏壊鎻忚竟 */
+  box-shadow: 0 16px 36px rgba(0, 47, 167, 0.15);
+}
+
+/* ===== 鍓壊鐐圭紑锛堝彲閫夛級 ===== */
+.post-kard::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 4px;
+  margin-top: 16px;
+  background-color: var(--accent); /* 鍓壊鐐圭紑 */
+  border-radius: 2px;
+  opacity: 0.85;
+}
+
+
+
+
+/* ===== 椤堕儴瀵艰埅鏍  ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(18px);
+}
+
+.nav-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 13px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.nav-logo {
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  letter-spacing: 0.2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+  background: rgba(0, 47, 167, 0.10);
+  color: var(--primary);
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 10px 16px;
+  }
+  .nav-links a {
+    padding: 6px 8px;
+  }
+}

@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>班级座号查询学生ID</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #2e74ff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #ffb340;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #ffb340;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ffb300;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #ffa000;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ffb340;
+            min-height: 25px;
+        }
+	.back-link {
+  	    display: inline-block;
+  	    margin-top: 24px;
+  	    text-decoration: none;
+  	    color: #e8c30c;
+  	    font-weight: 500;
+	}
+
+	.back-link:hover {
+  	    color: #e88c0c;
+	}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>班级座号查学生ID后四位</h1>
+    <label for="classNum">请输入班级号 (1~16):</label>
+    <input type="number" id="classNum" min="1" max="16">
+
+    <label for="studentNum">请输入学生座号 (1~51):</label>
+    <input type="number" id="studentNum" min="1" max="51">
+
+    <button onclick="calculateId()">计算 ID 后四位</button>
+    <div id="result"></div>
+    <a class="back-link" href="index.html">← 返回首页</a>
+</div>
+
+<script>
+    function calculateId() {
+        const classInput = document.getElementById('classNum');
+        const studentInput = document.getElementById('studentNum');
+        const resultDiv = document.getElementById('result');
+
+        const classNo = parseInt(classInput.value);
+        const studentNo = parseInt(studentInput.value);
+
+        if (isNaN(classNo) || isNaN(studentNo)) {
+            resultDiv.innerText = '请输入有效的数字';
+            return;
+        }
+
+        if (classNo < 1 || classNo > 16) {
+            resultDiv.innerText = '班级号应在 1 到 16 之间';
+            return;
+        }
+
+        if (studentNo < 1 || studentNo > 51) {
+            resultDiv.innerText = '学生座号应在 1 到 51 之间';
+            return;
+        }
+
+        // 计算公式：班级号 * 51 + 学生号
+        let fullNumber = (classNo - 1) * 51 + studentNo;
+
+        // 获取后四位并补零至四位数
+        let lastFourDigits = ('000' + fullNumber).slice(-4);
+
+        resultDiv.innerText = `该学生的学号后四位是：${lastFourDigits}`;
+    }
+</script>
+</body>
+</html>
